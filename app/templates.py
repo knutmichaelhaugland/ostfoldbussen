@@ -839,9 +839,8 @@ tjenesten svaret som rutetider. Endringer i Enturs API-er kan påvirke tjenesten
 Koden er lisensiert under <strong>MIT-lisensen</strong>: den kan brukes, kopieres, endres,
 deles og videreutvikles fritt, også kommersielt, så lenge opphavsretts- og lisensnotisen
 beholdes.</p>
-<p>Repoet er foreløpig privat. Det gjennomføres en opprydning i repoet før det åpnes i uke 46.
-Lisensfilen ligger i prosjektet og gjelder når koden gjøres tilgjengelig. Reisedataene fra
-Entur er under NLOD 2.0 og er ikke omfattet av MIT-lisensen.</p>
+<p>Kildekoden er offentlig tilgjengelig på GitHub under MIT-lisensen.
+Reisedataene fra Entur er under NLOD 2.0 og er ikke omfattet av MIT-lisensen.</p>
 """
     return _page("Data og lisens", "Åpne data",
                  "Kilde, lisens og forbehold for kollektivdataene.", content, public)

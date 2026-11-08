@@ -432,7 +432,7 @@ class PrivacyContactTests(unittest.TestCase):
 
 
 class DataLicenseTextTests(unittest.TestCase):
-    def test_data_page_uses_deles_and_repo_cleanup_note(self):
+    def test_data_page_states_public_github_source(self):
         import tempfile
         tmp = tempfile.TemporaryDirectory()
         app = RunningApp(tmp.name)
@@ -444,8 +444,9 @@ class DataLicenseTextTests(unittest.TestCase):
             tmp.cleanup()
         self.assertIn("deles og videreutvikles", html)
         self.assertNotIn("delas og videreutvikles", html)
-        self.assertIn("opprydning i repoet", html)
-        self.assertIn("uke 46", html)
+        self.assertIn("Kildekoden er offentlig tilgjengelig", html)
+        self.assertNotIn("opprydning i repoet", html)
+        self.assertNotIn("uke 46", html)
 
 
 class SeoTests(unittest.TestCase):
