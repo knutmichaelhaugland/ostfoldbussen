@@ -1,0 +1,41 @@
+# Offentlig nettside: egen Caddy på 80/443 med allowlist.
+# Privat admin-Caddy (127.0.0.1:8080) beholdes uendret.
+#
+# Bruk:
+#   docker compose -f docker-compose.yml -f docker-compose.public.yml up -d
+services:
+  caddy-public:
+    image: caddy:2.11.9-alpine@sha256:0bbb055bda6793c999bde78b1b5ce3e89f829fb031af2cf50056ea1246559fee
+    container_name: ostfoldbussen-caddy-public
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
+    volumes:
+      - ./deploy/Caddyfile.public:/etc/caddy/Caddyfile:ro
+      - caddy_public_data:/data
+      - caddy_public_config:/config
+    depends_on:
+      - app
+    restart: unless-stopped
+    read_only: true
+    tmpfs:
+      - /tmp:size=16m,mode=1777
+    security_opt:
+      - no-new-privileges:true
+    cap_drop:
+      - ALL
+    cap_add:
+      - NET_BIND_SERVICE
+    mem_limit: 256m
+    cpus: 0.25
+    pids_limit: 64
+    logging:
+      driver: json-file
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+volumes:
+  caddy_public_data:
+  caddy_public_config:

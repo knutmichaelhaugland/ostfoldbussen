@@ -1,0 +1,9 @@
+[Unit]
+Description=Østfoldbussen retention purge
+After=docker.service
+Requires=docker.service
+
+[Service]
+Type=oneshot
+WorkingDirectory=/opt/ostfoldbussen
+ExecStart=/usr/bin/docker-compose run --rm app python -m app purge-retention

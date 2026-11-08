@@ -1,0 +1,102 @@
+{
+  "question": "Hvordan kommer jeg fra Skredderåsen til Refsnes?",
+  "intent": {
+    "kind": "TRIP",
+    "from_text": "skredderåsen",
+    "to_text": "refsnes",
+    "line_code": "",
+    "time_text": "nå",
+    "target_datetime": "2026-11-06T08:30:00+01:00",
+    "notes": [
+      "ingen tidsuttrykk - bruker nå"
+    ]
+  },
+  "captured_at": "2026-11-05T20:39:30.073770+01:00",
+  "api_calls": {
+    "call_count": 4,
+    "statuses": [
+      200,
+      200,
+      200,
+      200
+    ],
+    "operation": "trip",
+    "transfer_slack_s": 120,
+    "num_trip_patterns": 10,
+    "date_time": "2026-11-06T08:30:00+01:00",
+    "status": "OK",
+    "pattern_count": 4,
+    "routing_errors": [],
+    "partial_errors": []
+  },
+  "raw_captures": [
+    {
+      "operation": "geocoder-autocomplete",
+      "method": "GET",
+      "url": "https://api.entur.io/geocoder/v3/autocomplete?q=skredder%C3%A5sen&counties=KVE%3ATopographicPlace%3A31&layers=stopPlace&limit=5",
+      "status": 200,
+      "attempt": 1,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Thu, 05 Nov 2026 19:39:29 GMT",
+        "rate-limit-allowed": "1000",
+        "rate-limit-used": "74",
+        "rate-limit-available": "926",
+        "rate-limit-range": "\"per-minute\"",
+        "rate-limit-expiry-time": "Thu Nov 05 2026 19:39:49 GMT-0000 (GMT)"
+      },
+      "body": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.695372,59.457935]},\"properties\":{\"id\":\"NSR:StopPlace:2636\",\"names\":{\"default\":\"Skredderåsen\",\"display\":\"Skredderåsen, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}}],\"metadata\":{\"query\":{\"text\":\"skredderåsen\",\"limit\":5,\"lang\":\"no\",\"filters\":{\"layers\":[\"stopPlace\"],\"counties\":[\"KVE:TopographicPlace:31\"]}},\"resultCount\":1,\"timestamp\":\"2026-11-05T19:39:29.439978149Z\"},\"bbox\":[10.695372,59.457935,10.695372,59.457935]}"
+    },
+    {
+      "operation": "geocoder-autocomplete",
+      "method": "GET",
+      "url": "https://api.entur.io/geocoder/v3/autocomplete?q=refsnes&counties=KVE%3ATopographicPlace%3A31&layers=stopPlace&limit=5",
+      "status": 200,
+      "attempt": 1,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Thu, 05 Nov 2026 19:39:29 GMT",
+        "rate-limit-allowed": "1000",
+        "rate-limit-used": "75",
+        "rate-limit-available": "925",
+        "rate-limit-range": "\"per-minute\"",
+        "rate-limit-expiry-time": "Thu Nov 05 2026 19:39:49 GMT-0000 (GMT)"
+      },
+      "body": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.617976,59.444622]},\"properties\":{\"id\":\"NSR:StopPlace:3029\",\"names\":{\"default\":\"Refsnes\",\"display\":\"Refsnes, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.620448,59.438760]},\"properties\":{\"id\":\"NSR:StopPlace:3025\",\"names\":{\"default\":\"Refsneskrona\",\"display\":\"Refsneskrona, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.621987,59.447464]},\"properties\":{\"id\":\"NSR:StopPlace:2474\",\"names\":{\"default\":\"Refsnesåsen\",\"display\":\"Refsnesåsen, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[11.361585,59.119392]},\"properties\":{\"id\":\"NSR:StopPlace:3012\",\"names\":{\"default\":\"Refne\",\"display\":\"Refne, Halden\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Halden\",\"localityId\":\"KVE:TopographicPlace:3101\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:5\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}}],\"metadata\":{\"query\":{\"text\":\"refsnes\",\"limit\":5,\"lang\":\"no\",\"filters\":{\"layers\":[\"stopPlace\"],\"counties\":[\"KVE:TopographicPlace:31\"]}},\"resultCount\":4,\"timestamp\":\"2026-11-05T19:39:29.589054914Z\"},\"bbox\":[10.617976,59.119392,11.361585,59.447464]}"
+    },
+    {
+      "operation": "graphql",
+      "method": "POST",
+      "url": "https://api.entur.io/journey-planner/v3/graphql",
+      "status": 200,
+      "attempt": 1,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Thu, 05 Nov 2026 19:39:29 GMT",
+        "rate-limit-allowed": "1000",
+        "rate-limit-used": "7",
+        "rate-limit-available": "993",
+        "rate-limit-range": "PT2M",
+        "rate-limit-expiry-time": "Thu Nov 05 2026 19:41:17 GMT-0000 (GMT)"
+      },
+      "body": "{\"data\":{\"trip\":{\"tripPatterns\":[{\"aimedStartTime\":\"2026-11-06T08:39:00+01:00\",\"expectedStartTime\":\"2026-11-06T08:39:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:03:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:03:00+01:00\",\"duration\":1440,\"walkTime\":0,\"waitingTime\":120,\"distance\":9327.0,\"streetDistance\":0.0,\"legs\":[{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":540,\"distance\":4750.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T08:39:00+01:00\",\"expectedStartTime\":\"2026-11-06T08:39:00+01:00\",\"aimedEndTime\":\"2026-11-06T08:48:00+01:00\",\"expectedEndTime\":\"2026-11-06T08:48:00+01:00\",\"line\":{\"id\":\"OST:Line:1_22\",\"publicCode\":\"22\",\"name\":\"Skredderåsen-Kambo\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Skredderåsen\",\"latitude\":59.457935,\"longitude\":10.695372,\"quay\":{\"id\":\"NSR:Quay:4602\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2636\",\"name\":\"Skredderåsen\"}}},\"toPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"situations\":[]},{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":780,\"distance\":4577.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T08:50:00+01:00\",\"expectedStartTime\":\"2026-11-06T08:50:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:03:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:03:00+01:00\",\"line\":{\"id\":\"OST:Line:1_20\",\"publicCode\":\"20\",\"name\":\"Refsnes\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"toPlace\":{\"name\":\"Refsnes\",\"latitude\":59.444622,\"longitude\":10.617976,\"quay\":{\"id\":\"NSR:Quay:5329\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:3029\",\"name\":\"Refsnes\"}}},\"situations\":[]}]},{\"aimedStartTime\":\"2026-11-06T08:54:00+01:00\",\"expectedStartTime\":\"2026-11-06T08:54:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:18:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:18:00+01:00\",\"duration\":1440,\"walkTime\":0,\"waitingTime\":120,\"distance\":9327.0,\"streetDistance\":0.0,\"legs\":[{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":540,\"distance\":4750.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T08:54:00+01:00\",\"expectedStartTime\":\"2026-11-06T08:54:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:03:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:03:00+01:00\",\"line\":{\"id\":\"OST:Line:1_22\",\"publicCode\":\"22\",\"name\":\"Skredderåsen-Kambo\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Skredderåsen\",\"latitude\":59.457935,\"longitude\":10.695372,\"quay\":{\"id\":\"NSR:Quay:4602\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2636\",\"name\":\"Skredderåsen\"}}},\"toPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"situations\":[]},{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":780,\"distance\":4577.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T09:05:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:05:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:18:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:18:00+01:00\",\"line\":{\"id\":\"OST:Line:1_20\",\"publicCode\":\"20\",\"name\":\"Refsnes\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"toPlace\":{\"name\":\"Refsnes\",\"latitude\":59.444622,\"longitude\":10.617976,\"quay\":{\"id\":\"NSR:Quay:5329\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:3029\",\"name\":\"Refsnes\"}}},\"situations\":[]}]},{\"aimedStartTime\":\"2026-11-06T09:24:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:24:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:48:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:48:00+01:00\",\"duration\":1440,\"walkTime\":0,\"waitingTime\":120,\"distance\":9327.0,\"streetDistance\":0.0,\"legs\":[{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":540,\"distance\":4750.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T09:24:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:24:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:33:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:33:00+01:00\",\"line\":{\"id\":\"OST:Line:1_22\",\"publicCode\":\"22\",\"name\":\"Skredderåsen-Kambo\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Skredderåsen\",\"latitude\":59.457935,\"longitude\":10.695372,\"quay\":{\"id\":\"NSR:Quay:4602\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2636\",\"name\":\"Skredderåsen\"}}},\"toPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"situations\":[]},{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":780,\"distance\":4577.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T09:35:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:35:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:48:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:48:00+01:00\",\"line\":{\"id\":\"OST:Line:1_20\",\"publicCode\":\"20\",\"name\":\"Refsnes\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"toPlace\":{\"name\":\"Refsnes\",\"latitude\":59.444622,\"longitude\":10.617976,\"quay\":{\"id\":\"NSR:Quay:5329\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:3029\",\"name\":\"Refsnes\"}}},\"situations\":[]}]},{\"aimedStartTime\":\"2026-11-06T09:39:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:39:00+01:00\",\"aimedEndTime\":\"2026-11-06T10:18:00+01:00\",\"expectedEndTime\":\"2026-11-06T10:18:00+01:00\",\"duration\":2340,\"walkTime\":0,\"waitingTime\":1020,\"distance\":9327.0,\"streetDistance\":0.0,\"legs\":[{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":540,\"distance\":4750.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T09:39:00+01:00\",\"expectedStartTime\":\"2026-11-06T09:39:00+01:00\",\"aimedEndTime\":\"2026-11-06T09:48:00+01:00\",\"expectedEndTime\":\"2026-11-06T09:48:00+01:00\",\"line\":{\"id\":\"OST:Line:1_22\",\"publicCode\":\"22\",\"name\":\"Skredderåsen-Kambo\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Skredderåsen\",\"latitude\":59.457935,\"longitude\":10.695372,\"quay\":{\"id\":\"NSR:Quay:4602\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2636\",\"name\":\"Skredderåsen\"}}},\"toPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"situations\":[]},{\"mode\":\"bus\",\"transportSubmode\":\"localBus\",\"duration\":780,\"distance\":4577.0,\"realtime\":false,\"aimedStartTime\":\"2026-11-06T10:05:00+01:00\",\"expectedStartTime\":\"2026-11-06T10:05:00+01:00\",\"aimedEndTime\":\"2026-11-06T10:18:00+01:00\",\"expectedEndTime\":\"2026-11-06T10:18:00+01:00\",\"line\":{\"id\":\"OST:Line:1_20\",\"publicCode\":\"20\",\"name\":\"Refsnes\",\"transportMode\":\"bus\"},\"fromPlace\":{\"name\":\"Moss bussterminal\",\"latitude\":59.436576,\"longitude\":10.66346,\"quay\":{\"id\":\"NSR:Quay:5070\",\"publicCode\":\"1\",\"stopPlace\":{\"id\":\"NSR:StopPlace:2900\",\"name\":\"Moss bussterminal\"}}},\"toPlace\":{\"name\":\"Refsnes\",\"latitude\":59.444622,\"longitude\":10.617976,\"quay\":{\"id\":\"NSR:Quay:5329\",\"publicCode\":\"\",\"stopPlace\":{\"id\":\"NSR:StopPlace:3029\",\"name\":\"Refsnes\"}}},\"situations\":[]}]}],\"routingErrors\":[]}}}"
+    },
+    {
+      "operation": "geocoder-place",
+      "method": "GET",
+      "url": "https://api.entur.io/geocoder/v3/place?ids=NSR%3AStopPlace%3A2636%2CNSR%3AStopPlace%3A2900%2CNSR%3AStopPlace%3A3029&lang=no",
+      "status": 200,
+      "attempt": 1,
+      "headers": {
+        "content-type": "application/json",
+        "date": "Thu, 05 Nov 2026 19:39:30 GMT",
+        "rate-limit-allowed": "1000",
+        "rate-limit-used": "76",
+        "rate-limit-available": "924",
+        "rate-limit-range": "\"per-minute\"",
+        "rate-limit-expiry-time": "Thu Nov 05 2026 19:39:49 GMT-0000 (GMT)"
+      },
+      "body": "{\"type\":\"FeatureCollection\",\"features\":[{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.662746,59.436439]},\"properties\":{\"id\":\"NSR:StopPlace:2900\",\"names\":{\"default\":\"Moss bussterminal\",\"display\":\"Moss bussterminal, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\",\"RUT:FareZone:9\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"busStation\"],\"stopPlaceRole\":\"standalone\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.695372,59.457935]},\"properties\":{\"id\":\"NSR:StopPlace:2636\",\"names\":{\"default\":\"Skredderåsen\",\"display\":\"Skredderåsen, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}},{\"type\":\"Feature\",\"geometry\":{\"type\":\"Point\",\"coordinates\":[10.617976,59.444622]},\"properties\":{\"id\":\"NSR:StopPlace:3029\",\"names\":{\"default\":\"Refsnes\",\"display\":\"Refsnes, Moss\"},\"layer\":\"stopPlace\",\"source\":\"nsr\",\"address\":{\"locality\":\"Moss\",\"localityId\":\"KVE:TopographicPlace:3103\",\"county\":\"Østfold\",\"countyId\":\"KVE:TopographicPlace:31\",\"countryCode\":\"no\"},\"categories\":[],\"fareZones\":[\"OST:FareZone:1\"],\"transportModes\":[{\"mode\":\"bus\"}],\"stopPlaceTypes\":[\"onstreetBus\"],\"stopPlaceRole\":\"standalone\"}}],\"metadata\":{\"query\":{\"limit\":3,\"lang\":\"no\"},\"resultCount\":3,\"timestamp\":\"2026-11-05T19:39:30.038375134Z\"}}"
+    }
+  ]
+}

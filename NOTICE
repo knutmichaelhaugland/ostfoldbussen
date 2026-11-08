@@ -1,0 +1,23 @@
+Østfoldbussen
+Copyright (c) 2026 Knut Michael Haugland
+
+This repository is licensed under the MIT License; see LICENSE.
+
+Third-party data
+----------------
+Reise- og sanntidsdata hentes fra Entur AS sine åpne tjenester og er lisensiert
+under Norsk lisens for offentlige data (NLOD) 2.0:
+https://data.norge.no/nlod/no/2.0
+
+Entur-data er ikke omfattet av MIT-lisensen. Ved gjenbruk skal Entur krediteres,
+og endringer skal merkes. Se også https://ostfoldbussen.no/data.
+
+Eventuelle navn på tredjepartsleverandører i en installasjon tilhører den
+operatøren og innebærer ingen varemerkelisens eller godkjenning av dette
+prosjektet.
+
+Prosjektidentitet og varemerker
+-------------------------------
+MIT-lisensen gjelder kildekoden og gir ingen rett til å bruke Østfoldbussen-navnet,
+logoen eller identiteten som offisiell tjeneste. Egne installasjoner må ikke fremstilles
+som offisielle Østfoldbussen-installasjoner eller som godkjent av prosjektet.

@@ -1,0 +1,26 @@
+# Caddy for lokal/offentlig standardinstallasjon (127.0.0.1:8080).
+#
+
+{
+	admin off
+	auto_https off
+}
+
+http://:8080 {
+	encode zstd gzip
+
+	header {
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		-Server
+	}
+
+	# Enkel tilgjengelighetssjekk på appens egne helseside (proxy til app).
+	reverse_proxy app:8000
+
+	log {
+		output stdout
+		format console
+	}
+}

@@ -1,0 +1,3 @@
+# Standard eier for alle endringer; justeres når prosjektet får flere
+# vedlikeholdere. CODEOWNERS krever branch protection/ruleset for å håndheves.
+* @knutmichaelhaugland

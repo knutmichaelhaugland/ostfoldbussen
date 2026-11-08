@@ -1,0 +1,96 @@
+name: ci
+
+# Ingen deploy. Kun tester, Docker-bygg og sikkerhetspolicy.
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+
+permissions:
+  contents: read
+
+# PR-kjøringer kan avbrytes; main/release skal ikke kanselleres av en ny kjøring.
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+jobs:
+  tests:
+    name: Tester (enhet, kontrakt, web, admin og SMS)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Python 3.13
+        uses: actions/setup-python@a26af69be951a213d495a4c3e4e4022e16d87065 # v5
+        with:
+          python-version: "3.13.9"
+      - name: Enhet-, kontrakt-, web-, admin-, SMS- og regresjonstester
+        run: python -m unittest discover -s tests -t . -v
+      - name: Prototype-tester
+        run: python -m unittest discover -s prototype/tests -t . -v
+      - name: CI- og releasepolicy
+        run: python -m unittest tests.test_ci_policy -v
+      - name: Lokale Markdown-lenker
+        run: python tools/check_markdown_links.py
+      - name: Git-/Docker-hygiene
+        run: python tools/check_repo_hygiene.py
+      - name: Quickstart-rettigheter
+        run: python tools/check_quickstart_permissions.py
+
+  docker-build:
+    name: Docker-bygg (isolert, uten secrets)
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Bygg image
+        run: docker build -t ostfoldbussen-app:ci .
+      - name: Helsesjekk-kommando finnes i imaget
+        run: docker run --rm ostfoldbussen-app:ci python -c "import app.server, prototype.journeys; print('import OK')"
+      - name: Image kjører som ikke-root
+        run: test "$(docker run --rm ostfoldbussen-app:ci id -u)" = "10001"
+
+  secret-scan:
+    name: Prosjektspesifikk hemmelighetsskanning (supplerende)
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Checkout
+        uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          persist-credentials: false
+      - name: Prosjektspesifikk skanning
+        run: python tools/project_secret_scan.py
+      - name: Kontroller at påkrevde filer finnes
+        run: |
+          set -euo pipefail
+          for f in .env.example Dockerfile docker-compose.yml; do
+            test -e "$f" || { echo "FEIL: påkrevd fil mangler: $f"; exit 1; }
+          done
+      - name: Forbudt identitet (SonarCloud/GITAR/GitLab)
+        shell: bash
+        run: |
+          set -euo pipefail
+          if grep -RinE 'sonarcloud|gitar|gitlab' app deploy Dockerfile docker-compose.yml .env.example; then
+            echo "FEIL: forbudt identitet referert"; exit 1
+          fi
+          echo "OK: ingen forbudte identiteter"
+
+  gitleaks:
+    name: Gitleaks (hovedkontroll, full historikk)
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@11d5960a326750d5838078e36cf38b85af677262 # v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: gitleaks/gitleaks-action@ff98106e4c7b2bc287b24eaf42907196329070c7 # v2.3.9
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}

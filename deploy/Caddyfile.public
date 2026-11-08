@@ -1,0 +1,54 @@
+# EKSEMPEL: ostfoldbussen.no er den offisielle tjenestens domene.
+# Selvhostere MÅ erstatte alle domene- og kontaktadresser før offentlig bruk.
+# ØSTFOLDBUSSEN — OFFENTLIG NETTSIDE (HTTPS)
+#
+# Bare de offentlige informasjonssidene eksponeres. Admin, API, helsesjekk,
+# logger, database og testverktøy er ikke tilgjengelig fra internett.
+# Privat admin nås via SSH-tunnel til 127.0.0.1:8080 (Caddyfile).
+
+{
+	admin off
+	servers {
+		protocols h1 h2
+	}
+}
+
+# HTTP -> HTTPS
+http://ostfoldbussen.no, http://www.ostfoldbussen.no {
+	redir https://{host}{uri} permanent
+}
+
+# www -> apex
+www.ostfoldbussen.no {
+	redir https://ostfoldbussen.no{uri} permanent
+}
+
+ostfoldbussen.no {
+	encode zstd gzip
+
+	header {
+		Strict-Transport-Security "max-age=31536000; includeSubDomains"
+		X-Content-Type-Options "nosniff"
+		X-Frame-Options "DENY"
+		Referrer-Policy "no-referrer"
+		Content-Security-Policy "default-src 'self'; style-src 'unsafe-inline'; img-src 'self' data:; base-uri 'none'; form-action 'self'; frame-ancestors 'none'"
+		-Server
+	}
+
+	# Offentlig allowlist. Alt annet er 404 — også /admin, /api, /healthz.
+	@public path / /slik-fungerer-det /om /personvern /data /kontakt /status /favicon.ico /ostfoldbussen.vcf /sitemap.xml /robots.txt /og-image.png /about /about/
+	route {
+		handle @public {
+			reverse_proxy app:8000
+		}
+		handle {
+			header X-Robots-Tag "noindex"
+			respond "Fant ikke siden." 404
+		}
+	}
+
+	log {
+		output stdout
+		format console
+	}
+}

@@ -1,0 +1,41 @@
+name: Feilrapport
+description: Rapporter en reproduserbar feil i programvaren
+title: "[bug] "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Ikke legg inn hemmeligheter, telefonnumre, produksjonslogger eller
+        personopplysninger. Sikkerhetssårbarheter skal rapporteres privat.
+  - type: textarea
+    id: description
+    attributes:
+      label: Beskrivelse
+      description: Hva skjedde, og hva forventet du?
+    validations:
+      required: true
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Reproduksjon
+      description: Kommandoer eller steg som viser feilen, med syntetiske data.
+    validations:
+      required: true
+  - type: input
+    id: version
+    attributes:
+      label: Commit/versjon
+      description: Oppgi commit-SHA eller releasekandidat.
+  - type: textarea
+    id: environment
+    attributes:
+      label: Miljø
+      description: OS, Python/Docker-versjon og hvordan prosjektet ble startet.
+  - type: checkboxes
+    id: confirm
+    attributes:
+      label: Bekreftelse
+      options:
+        - label: Jeg har fjernet hemmeligheter og personopplysninger fra rapporten.
+          required: true
